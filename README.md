@@ -26,10 +26,7 @@ It leverages `SignalR` for real-time monitoring and `LiteDb` a Serverless MongoD
 
 ## What's New
 
-- Official support for .NET8
-- Support for .NET8 UseOutputCache
-- Blacklisting using Regex
-- Bug Fixes
+- Package upgrades for vulnerability patches
 
 ### Breaking Changes
 
@@ -44,12 +41,12 @@ It leverages `SignalR` for real-time monitoring and `LiteDb` a Serverless MongoD
 Install via .NET CLI
 
 ```bash
-dotnet add package WatchDog.NET --version 1.4.11
+dotnet add package WatchDog.NET --version 1.4.12
 ```
 Install via Package Manager
 
 ```bash
-Install-Package WatchDog.NET --version 1.4.11
+Install-Package WatchDog.NET --version 1.4.12
 ```
 
 
