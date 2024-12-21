@@ -12,12 +12,9 @@
 		<Authors>Israel Ulelu, Kelechi Onyekwere</Authors>
 		<PackageId>WatchDog.NET</PackageId>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>1.4.11</Version>
+		<Version>1.4.12</Version>
 		<PackageReleaseNotes>
-			- Official support for .NET8
-			- Support for .NET8 UseOutputCache
-			- Blacklisting using Regex
-			- Bug Fixes
+			- Package upgrades for vulnerability patches
 		</PackageReleaseNotes>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IncludeSymbols>True</IncludeSymbols>
