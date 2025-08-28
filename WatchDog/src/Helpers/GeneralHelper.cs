@@ -1,4 +1,10 @@
-﻿using System.IO;
+﻿using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
+using System.IO;
+using System.Text.Json;
+using WatchDog.src.Enums;
 using WatchDog.src.Models;
 
 namespace WatchDog.src.Helpers
@@ -25,7 +31,28 @@ namespace WatchDog.src.Helpers
 
         public static bool IsPostgres()
         {
-            return !string.IsNullOrEmpty(WatchDogExternalDbConfig.ConnectionString) && WatchDogSqlDriverOption.SqlDriverOption == Enums.WatchDogSqlDriverEnum.PostgreSql;
+            return !string.IsNullOrEmpty(WatchDogExternalDbConfig.ConnectionString) && WatchDogDatabaseDriverOption.DatabaseDriverOption == Enums.WatchDogDbDriverEnum.PostgreSql;
+        }
+
+        public static dynamic CamelCaseSerializer
+            => WatchDog.Serializer switch
+            {
+                WatchDogSerializerEnum.Newtonsoft => new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                },
+                _ => new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                }
+            };
+        public static MemoryCacheEntryOptions cacheEntryOptions {
+            get 
+            {
+                return new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(5))
+                    .SetPriority(CacheItemPriority.High);
+            }
         }
     }
 }
